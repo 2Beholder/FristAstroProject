@@ -2,9 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Greeting from '../components/Greeting';
 const pageTitle = "首页";
+import VueButton from '../components/VueButton.vue';
+import NextCard from '../components/NextCard.jsx';
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <h2>我超棒的博客副标题</h2>
   <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} />
   <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+  <!-- Vue 组件：只有在滚动到可见时才水合 -->
+	<VueButton client:visible />
+
+	<!-- React/Next 组件：只在空闲时水合 -->
+	<NextCard client:idle />
 </BaseLayout>
